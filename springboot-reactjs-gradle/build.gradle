@@ -2,9 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.7.4'
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
+	id "com.moowork.node" version "1.3.1"
 }
 
-group = 'com.example'
+group = 'com.example.springbootreactjsgradle'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
@@ -18,10 +19,58 @@ repositories {
 	mavenCentral()
 }
 
+node {
+	// Version of node to use.
+	version = '10.16.2'
+
+	// Base URL for fetching node distributions (change if you have a mirror).
+//    distBaseUrl = 'https://nodejs.org/dist'
+
+	// If true, it will download node using above parameters.
+	// If false, it will try to use globally installed node.
+	download = true
+
+	// Set the work directory for unpacking node
+	workDir = file("${project.projectDir}/src/main/myfrontend/nodejs")
+
+	// Set the work directory for NPM
+	npmWorkDir = file("${project.projectDir}/src/main/myfrontend/npm")
+
+	// Set the work directory where node_modules should be located
+	nodeModulesDir = file("${project.projectDir}/src/main/myfrontend")
+}
+
+processResources{
+	dependsOn 'copyFrontendToBuild'
+}
+
+task copyFrontendToBuild(type: Copy) {
+	dependsOn 'npmBuild'
+	from "$projectDir/src/main/myfrontend/build/"
+//    include "*"
+	into "$buildDir/resources/main/static"
+}
+
+task npmInstallDependencies(type: NpmTask) {
+	dependsOn 'npmSetup'
+	execOverrides {
+		it.ignoreExitValue = true
+		it.workingDir = 'src/main/myfrontend'
+	}
+	args = ['install']
+}
+
+task npmBuild(type: NpmTask) {
+	dependsOn 'npmInstallDependencies'
+	execOverrides {
+		it.workingDir = 'src/main/myfrontend'
+	}
+	args = ['run', 'build']
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
