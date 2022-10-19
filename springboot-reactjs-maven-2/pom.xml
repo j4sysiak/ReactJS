@@ -84,7 +84,7 @@
                 </executions>
                 <configuration>
                     <nodeVersion>v16.18.0</nodeVersion>
-                    <workingDirectory>src/myreactapp</workingDirectory>
+                    <workingDirectory>src/main/myreactapp</workingDirectory>
                 </configuration>
 
             </plugin>
@@ -103,7 +103,7 @@
                             <outputDirectory>target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>src/myreactapp/build</directory>
+                                    <directory>src/main/myreactapp/build</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>

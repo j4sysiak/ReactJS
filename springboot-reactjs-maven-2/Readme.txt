@@ -36,3 +36,17 @@ http://localhost:8080/myhtml.html
 
 --------------------------------- tworzenie jara zawierającego Spring Boota i ReactaJS ---------------------------
 
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-maven-2/src/main/myreactapp (master)
+$ npm run build
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+
