@@ -13,7 +13,18 @@ https://github.com/srs/gradle-node-plugin
 Copy files
 https://docs.gradle.org/current/userguide/working_with_files.html
 
------------------------------------------------------------------------
+----------------------------------instalacja frontu React-------------------------------------
+ 
+Jacek@BERLIN MINGW64 cd /C/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/demo13/src/main
+Jacek@BERLIN MINGW64 /C/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/demo13/src/main (master)
+$ ls
+java/  resources/
+
+Jacek@BERLIN MINGW64   npm install -g npx
+Jacek@BERLIN MINGW64   npx create-react-app myreactapp
+
+
+----------------------------------------------------------------------
 
 Jacek@BERLIN MINGW64 /C/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle (master)
 $ ./gradlew build --dry-run

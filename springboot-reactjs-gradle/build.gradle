@@ -1,13 +1,14 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.4'
-	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
 	id 'java'
 	id "com.moowork.node" version "1.3.1"
 }
 
-group = 'com.example.springbootreactjsgradle'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '12'
 
 configurations {
 	compileOnly {
@@ -31,46 +32,55 @@ node {
 	download = true
 
 	// Set the work directory for unpacking node
-	workDir = file("${project.projectDir}/src/main/myfrontend/nodejs")
+	workDir = file("${project.projectDir}/src/main/myreactapp/nodejs")
 
 	// Set the work directory for NPM
-	npmWorkDir = file("${project.projectDir}/src/main/myfrontend/npm")
+	npmWorkDir = file("${project.projectDir}/src/main/myreactapp/npm")
 
 	// Set the work directory where node_modules should be located
-	nodeModulesDir = file("${project.projectDir}/src/main/myfrontend")
+	nodeModulesDir = file("${project.projectDir}/src/main/myreactapp")
 }
+
 
 processResources{
 	dependsOn 'copyFrontendToBuild'
 }
 
 task copyFrontendToBuild(type: Copy) {
-	dependsOn 'npmBuild'
-	from "$projectDir/src/main/myfrontend/build/"
+	from "$projectDir/src/main/myreactapp/build/"
 //    include "*"
 	into "$buildDir/resources/main/static"
 }
 
-task npmInstallDependencies(type: NpmTask) {
-	dependsOn 'npmSetup'
-	execOverrides {
-		it.ignoreExitValue = true
-		it.workingDir = 'src/main/myfrontend'
-	}
-	args = ['install']
-}
+
 
 task npmBuild(type: NpmTask) {
-	dependsOn 'npmInstallDependencies'
 	execOverrides {
-		it.workingDir = 'src/main/myfrontend'
+//        it.ignoreExitValue = true
+		it.workingDir = 'src/main/myreactapp'
 	}
 	args = ['run', 'build']
+}
+
+task npmShowVersion(type: NpmTask) {
+	execOverrides {
+		it.ignoreExitValue = true
+		it.workingDir = 'src/main/myreactapp'
+	}
+	args = ['--version']
+}
+
+task npmInstall2(type: NpmTask) {
+	execOverrides {
+		it.ignoreExitValue = true
+		it.workingDir = 'src/main/myreactapp'
+	}
+	args = ['install']
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
