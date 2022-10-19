@@ -36,6 +36,7 @@ http://localhost:8080/myhtml.html
 
 --------------------------------- tworzenie jara zawierającego Spring Boota i ReactaJS ---------------------------
 
+1. BUILD REACTA:
 Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-maven-2/src/main/myreactapp (master)
 $ npm run build
 
@@ -48,5 +49,19 @@ You may serve it with a static server:
 Find out more about deployment here:
 
   https://cra.link/deployment
+
+2. NPM CLEAN BUILD Spring Boota
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:26 min
+[INFO] Finished at: 2022-10-19T14:50:26+02:00
+[INFO] ------------------------------------------------------------------------
+
+
+
+W target/static/static/* powinna być zawartość z builda z Reacta: C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-maven-2\src\main\myreactapp\build\static
+
 
 
