@@ -164,3 +164,42 @@ Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-grad
 BUILD SUCCESSFUL in 13s
 
 
+-------   budujemy całość
+
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-2 (master)
+$ gradle build
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+
+BUILD SUCCESSFUL in 8m 56s
+12 actionable tasks: 12 executed
+
+
+w katalogu:
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-2\build
+mamy builda Spring Boota
+i mamy builda ReactJS: C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-2\build\resources\main\static\static
+
+i mamy też wspólny jar:
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-2\build\libs\springboot-reactjs-gradle-2-0.0.1-SNAPSHOT.jar
+
+uruchamiamy go:
+cd /c/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-2/build/libs
+java -jar springboot-reactjs-gradle-2-0.0.1-SNAPSHOT.jar
+
+2022-10-19 19:35:42.684  INFO 13680 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-19 19:35:42.699  INFO 13680 --- [           main] .e.s.SpringbootReactjsGradle2Application : Started SpringbootReactjsGradle2Application in 6.865 seconds (JVM running for 8.091)
+
+
+
+odpalamy:  Spring Boota:  http://localhost:8080/welcome.html
+odpalamy:   ReactJS:  http://localhost:8080/index.html
