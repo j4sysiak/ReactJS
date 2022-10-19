@@ -63,5 +63,24 @@ Find out more about deployment here:
 
 W target/static/static/* powinna być zawartość z builda z Reacta: C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-maven-2\src\main\myreactapp\build\static
 
+mamy nasz piękny jar zawierającyL Spring Boota i ReactJS:
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-maven-2\target\springboot-reactjs-maven-2-0.0.1-SNAPSHOT.jar
 
 
+uruchamiamy aplikację:
+$ java -jar /C/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-maven-2/target/springboot-reactjs-maven-2-0.0.1-SNAPSHOT.jar
+
+           .   ____          _            __ _ _
+          /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+         ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+          \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+           '  |____| .__|_| |_|_| |_\__, | / / / /
+          =========|_|==============|___/=/_/_/_/
+          :: Spring Boot ::                (v2.7.4)
+
+
+i odpalamy Spring Boota:
+http://localhost:8080/myhtml.html
+
+i odpalamy ReactJS:
+http://localhost:8080/index.html
