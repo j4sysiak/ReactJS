@@ -40,7 +40,7 @@ npx create-react-app myreactapp
 
 We suggest that you begin by typing:
 
-  cd webapp
+  cd myreactapp
   npm install
   npm run-script build
   npm start
