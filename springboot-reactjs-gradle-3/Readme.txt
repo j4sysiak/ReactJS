@@ -194,6 +194,7 @@ webpack compiled successfully
 
 UWAGA: i to najważniejsze !!!!!!!!!!!!!!!!
 można się dostać z ReactaJS z instancji developerskiej na porcie 3000 do naszego backendu Spring Bootowego na port 8080
+musi być jednak proxy localhost:8080 ustawione w package.json
 
 Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/build/libs (master)
 $ curl http://localhost:3000/api
