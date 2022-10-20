@@ -41,3 +41,5 @@ We suggest that you begin by typing:
   npm run-script build
   npm start
 
+  npm run eject    (ale Uwaga - muszą być commity porobione)
+
