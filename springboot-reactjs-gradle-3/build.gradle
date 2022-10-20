@@ -32,14 +32,14 @@ task buildReact(type: Exec) {
 	workingDir "$projectDir/src/main/webapp2"
  	inputs.dir "$projectDir/src/main/webapp2"
 	group = BasePlugin.BUILD_GROUP
-	commandLine "npm", "run-script", "build"
+	commandLine "npm.cmd", "run-script", "build"
 }
 
 task installReact(type: Exec) {
 	workingDir "$webappDir"
 	inputs.dir "$webappDir"
 	group = BasePlugin.BUILD_GROUP
- 	commandLine "npm", "audit", "fix"
+ 	commandLine "npm.cmd", "audit", "fix"
  	commandLine "npm.cmd", "install"
 }
 
