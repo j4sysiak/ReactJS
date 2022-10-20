@@ -60,7 +60,46 @@ linia 57:
 było:  appBuild: resolveApp(buildPath),
 jest:  appBuild: resolveApp('build/static'),
 
+usuwamy zawartość katalogu build (ale katalog zostawiamy):
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\src\main\webapp2\build
+
+modyfikujemy plik: build.gradle
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\build.gradle
+
+cd /c/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3
 
 
+dodajemy cztery tagi do build.gradle:
+
+------------------------
+def webappDir = "$projectDir/src/main/webapp"
+sourceSets {
+	main {
+		resources {
+			srcDirs = ["$webappDir/build", "$projectDir/src/main/resources"]
+		}
+	}
+}
+
+processResources {
+	dependsOn "buildReact"
+}
+
+task buildReact(type: Exec) {
+	dependsOn "installReact"
+	workingDir "$webappDir"
+	inputs.dir "$webappDir"
+	group = BasePlugin.BUILD_GROUP
+	commandLine "npm", "run-script", "build"
+}
+
+task installReact(type: Exec) {
+	workingDir "$webappDir"
+	inputs.dir "$webappDir"
+	group = BasePlugin.BUILD_GROUP
+	commandLine "npm", "audit", "fix"
+	commandLine "npm", "install"
+}
+---------------------------------------------------
 
 
