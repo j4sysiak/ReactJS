@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'org.springframework.boot' version '2.7.4'
 	id 'java'
 }
 
@@ -14,7 +14,7 @@ repositories {
 }
 
 
-def webappDir = "$projectDir/src/main/webapp2"
+def webappDir = "$projectDir/src/main/webapp"
 sourceSets {
 	main {
 		resources {
@@ -29,8 +29,8 @@ processResources {
 
 task buildReact(type: Exec) {
 	dependsOn "installReact"
-	workingDir "$webappDir"
-	inputs.dir "$webappDir"
+	workingDir "$projectDir/src/main/webapp2"
+ 	inputs.dir "$projectDir/src/main/webapp2"
 	group = BasePlugin.BUILD_GROUP
 	commandLine "npm", "run-script", "build"
 }
@@ -39,8 +39,8 @@ task installReact(type: Exec) {
 	workingDir "$webappDir"
 	inputs.dir "$webappDir"
 	group = BasePlugin.BUILD_GROUP
-	commandLine "npm", "audit", "fix"
-	commandLine "npm", "install"
+ 	commandLine "npm", "audit", "fix"
+ 	commandLine "npm.cmd", "install"
 }
 
 dependencies {

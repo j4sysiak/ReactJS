@@ -71,6 +71,8 @@ cd /c/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3
 
 dodajemy cztery tagi do build.gradle:
 
+UWGA: pamietaj w skrypcie gradle.build polecenie npm.cmd jeżeli pod Windowsem odpalamy !!!
+
 ------------------------
 def webappDir = "$projectDir/src/main/webapp"
 sourceSets {
@@ -90,15 +92,15 @@ task buildReact(type: Exec) {
 	workingDir "$webappDir"
 	inputs.dir "$webappDir"
 	group = BasePlugin.BUILD_GROUP
-	commandLine "npm", "run-script", "build"
+	commandLine "npm.cmd", "run-script", "build"
 }
 
 task installReact(type: Exec) {
 	workingDir "$webappDir"
 	inputs.dir "$webappDir"
 	group = BasePlugin.BUILD_GROUP
-	commandLine "npm", "audit", "fix"
-	commandLine "npm", "install"
+	commandLine "npm.cmd", "audit", "fix"
+	commandLine "npm.cmd", "install"
 }
 ---------------------------------------------------
 
