@@ -43,10 +43,10 @@ We suggest that you begin by typing:
 
   npm run eject    (ale Uwaga - muszą być commity porobione)
 
-  acek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/src/main/webapp2 (master)
+  acek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/src/main/webapp (master)
   $ git add -A
 
-  Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/src/main/webapp2 (master)
+  Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/src/main/webapp (master)
   $ git commit -a -m"20-10-2022 12:19"
 
 $ npm run eject
@@ -54,14 +54,14 @@ Ejected successfully!
 
 
 modyfikujemy plik: paths.js
-C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\src\main\webapp2\config\paths.js
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\src\main\webapp\config\paths.js
 
 linia 57:
 było:  appBuild: resolveApp(buildPath),
 jest:  appBuild: resolveApp('build/static'),
 
 usuwamy zawartość katalogu build (ale katalog zostawiamy):
-C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\src\main\webapp2\build
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\src\main\webapp\build
 
 modyfikujemy plik: build.gradle
 C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\build.gradle
