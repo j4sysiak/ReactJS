@@ -29,8 +29,8 @@ processResources {
 
 task buildReact(type: Exec) {
 	dependsOn "installReact"
-	workingDir "$projectDir/src/main/webapp2"
- 	inputs.dir "$projectDir/src/main/webapp2"
+	workingDir "$webappDir"
+	inputs.dir "$webappDir"
 	group = BasePlugin.BUILD_GROUP
 	commandLine "npm.cmd", "run-script", "build"
 }

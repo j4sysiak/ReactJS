@@ -104,4 +104,55 @@ task installReact(type: Exec) {
 }
 ---------------------------------------------------
 
+Uruchamiamy testowo:  buildReact
+jak się zakończy successfully
+
+to odpalamy z gradle: clean build
+> Task :processResources
+> Task :classes
+> Task :bootJarMainClassName
+> Task :bootJar
+> Task :jar
+> Task :assemble
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+> Task :test
+> Task :check
+> Task :build
+
+BUILD SUCCESSFUL in 35s
+9 actionable tasks: 9 executed
+15:40:44: Execution finished 'build'.
+
+
+lub
+
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3 (master)
+$ gradle clean build
+
+BUILD SUCCESSFUL in 1m 10s
+10 actionable tasks: 10 executed
+
+
+dzięki temu między innymi udało nam się zintegrować ReactJS z Spring Bootem tzn. cała zawartość:
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\src\main\webapp\build\static\static
+
+została skopiowana do obszaru Spring Boota:
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\build\resources\main\static
+
+----------------   Uruchomienie aplikacji:
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/build/libs (master)
+$ java -jar springboot-reactjs-gradle-3-0.0.1-SNAPSHOT.jar
+
+2022-10-20 15:51:14.290  INFO 4676 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-20 15:51:14.290  INFO 4676 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-20 15:51:14.290  INFO 4676 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+
+
+
+http://localhost:8080/welcome.html  ------------  Spring Boot
+http://localhost:8080/indx.html  ------------  ReactJS
+lub
+http://localhost:8080  ------------  ReactJS
 
