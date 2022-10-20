@@ -43,3 +43,17 @@ We suggest that you begin by typing:
 
   npm run eject    (ale Uwaga - muszą być commity porobione)
 
+  acek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/src/main/webapp2 (master)
+  $ git add -A
+
+  Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/src/main/webapp2 (master)
+  $ git commit -a -m"20-10-2022 12:19"
+
+$ npm run eject
+Ejected successfully!
+
+
+
+
+
+
