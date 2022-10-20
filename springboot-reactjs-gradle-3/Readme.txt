@@ -1,5 +1,8 @@
 https://www.youtube.com/watch?v=RYb9HcTNlAg&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=2
 
+https://bitbucket.org/mikemoellernielsen/demo_springboot_react/src/master/build.gradle
+
+
 ReactJS inside a Spring Boot Container.
 
 =========================================================================
@@ -150,9 +153,52 @@ $ java -jar springboot-reactjs-gradle-3-0.0.1-SNAPSHOT.jar
 2022-10-20 15:51:14.290  INFO 4676 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 
 
+------------>  Spring Boot
+http://localhost:8080/welcome.html
+lub   http://localhost:8080/api
 
-http://localhost:8080/welcome.html  ------------  Spring Boot
-http://localhost:8080/indx.html  ------------  ReactJS
-lub
-http://localhost:8080  ------------  ReactJS
+------------>  ReactJS
+http://localhost:8080/indx.html
+lub  http://localhost:8080
+
+
+
+---------------------  Add proxy to package.json in order to develop
+"proxy": "http://localhost:9080"
+
+
+--------------------   uruchamianie osobno Spring boota i Reacta
+Spring Boota odpalamy z klasy SpringbootReactjsGradle3Application  (zielona strzałka)  lub z gradla taska: build
+
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/build/libs (master)
+$ curl http://localhost:8080/api
+Up and running: 2022-10-20T16:32:00.554958300
+
+
+
+ReactaJS odpalamy lokalnie (development server z portu 3000) z lokalicacji:
+
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/src/main/webapp (master)
+$ npm start
+
+You can now view webapp in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.56.1:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+
+
+UWAGA: i to najważniejsze !!!!!!!!!!!!!!!!
+można się dostać z ReactaJS z instancji developerskiej na porcie 3000 do naszego backendu Spring Bootowego na port 8080
+
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-3/build/libs (master)
+$ curl http://localhost:3000/api
+Up and running: 2022-10-20T16:30:16.659741400
+
+
+
 
