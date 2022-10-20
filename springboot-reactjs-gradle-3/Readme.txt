@@ -53,6 +53,13 @@ $ npm run eject
 Ejected successfully!
 
 
+modyfikujemy plik: paths.js
+C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-3\src\main\webapp2\config\paths.js
+
+linia 57:
+było:  appBuild: resolveApp(buildPath),
+jest:  appBuild: resolveApp('build/static'),
+
 
 
 
