@@ -30,8 +30,9 @@ $ npx -v
 ================================= tworzymy aplikację ReactJS ============================
 https://create-react-app.dev/docs/setting-up-your-editor
 
+cd C:\Users\Jacek\Documents\JAVA\SpringBoot\ReactJS\springboot-reactjs-gradle-4\src\frontend
+npx create-react-app myreactapp
 
-npx create-react-app webapp
 
   npm run eject
     Removes this tool and copies build dependencies, configuration files
