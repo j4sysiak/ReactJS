@@ -12,7 +12,17 @@ const planetList = React.memo(  (props) => {
             {id: 4, name: 'Earth'}
         ]});
 
-    const  myplanets = mymodel.planets.map(planet => (<div key={planet.id}>{planet.name}</div>))
+    /* Function */
+    const clickhandlerPlanet = (id) => {
+        const myplanets = [...mymodel.planets]
+        const planetindex = myplanets.findIndex(planet => planet.id === id)
+        myplanets.splice(planetindex, 1)
+        mymodelupdate({planets: myplanets})
+
+    }
+
+    const  myplanets = mymodel.planets.map(planet => (<div key={planet.id}
+                                           onClick={clickhandlerPlanet.bind(this, planet.id)}>{planet.name}</div>))
 
     return (
         <div>
