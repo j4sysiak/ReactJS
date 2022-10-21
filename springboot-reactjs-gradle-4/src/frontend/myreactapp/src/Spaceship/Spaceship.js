@@ -1,7 +1,7 @@
 import React from 'react'
 import './Spaceship.css'
 
-/* function */
+/* Function Component */
 const spaceship = (props) => {
     return (
         <div className='SpaceshipLAF' onClick={props.myclickhandler}>

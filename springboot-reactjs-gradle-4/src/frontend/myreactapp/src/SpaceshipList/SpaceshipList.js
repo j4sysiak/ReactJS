@@ -1,10 +1,11 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Spaceship from "../Spaceship/Spaceship";
 
 class SpaceshipList extends Component {
 
     /* stan */
     state = {
+        showheader: false,
         anotherheader: 'anotherheader: Some value from state',
         spaceship: [
             {id: 1, name: 'Spaceship1', crew: 10},
@@ -13,7 +14,7 @@ class SpaceshipList extends Component {
         ]
     };
 
-    /* function */
+    /* Function Component */
     deleteAShip = (id) => {
         const copyOfShips = [...this.state.spaceship];
         console.log("Before deletion: " + JSON.stringify(copyOfShips));
@@ -24,7 +25,19 @@ class SpaceshipList extends Component {
         spaceship: [...copyOfShips]});
     }
 
+    /* Function Component */
+    headerswitcher = () => {
+        this.setState({showheader: !this.state.showheader})
+    }
+
     render() {
+        const header = this.state.showheader === true ? (
+            <React.Fragment>
+                <h1>{this.props.myheader}</h1>
+                <h2>{this.state.anotherheader}</h2>
+            </React.Fragment>
+        ) : (<div>Header is now hidden !!!</div>);
+
         const ships = this.state.spaceship.map(spaceship => (
             <Spaceship name={spaceship.name}
                        myclickhandler={this.deleteAShip.bind(this, spaceship.id)}
@@ -34,8 +47,8 @@ class SpaceshipList extends Component {
 
         return (
             <div>
-                <h1>{this.props.myheader}</h1>
-                <h2>{this.state.anotherheader}</h2>
+                <div onClick={this.headerswitcher}>Button div</div>
+                {header}
                 {ships}
             </div>
         )

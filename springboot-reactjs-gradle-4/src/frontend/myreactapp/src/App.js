@@ -1,12 +1,15 @@
 import './App.css';
 import React from 'react';
 import SpaceshipList from './SpaceshipList/SpaceshipList';
+import PlanetList from "./PlanetList/PlanetList";
 
 function App() {
   return (
    <div className="App">
-      texttexttexttexttexttexttexttexttexttexttexttext
-     <SpaceshipList myheader='myheader: Look at all these spaceships!!!'/>
+      text-text-text-text-text-text-text-text-text-tex-text-text
+       <PlanetList/>
+       <SpaceshipList myheader='myheader: Look at all these spaceships!!!'/>
+
    </div>
  );
 }
