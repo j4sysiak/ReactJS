@@ -5,8 +5,7 @@ import SpaceshipList from './SpaceshipList/SpaceshipList';
 function App() {
   return (
    <div className="App">
-      texttexttexttexttexttexttexttexttexttexttexttext
-     <SpaceshipList myheader='myheader: Look at all these spaceships!!!'/>
+     <SpaceshipList myheader='Look at all these spaceships!!!'/>
    </div>
  );
 }
