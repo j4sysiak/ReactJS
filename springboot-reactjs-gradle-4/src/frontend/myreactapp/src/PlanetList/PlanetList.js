@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 /* Function Component */
 const planetList = React.memo(  (props) => {
-
+    // const axios = require('axios').default;
     useEffect(() => {
        console.log('Component was mounted!!!')
     }, []);
@@ -17,17 +18,16 @@ const planetList = React.memo(  (props) => {
         }
     }, []);
 
-    const [mymodel, mymodelUpdate] = useState({planets: [
-            {id: -1, name: 'Dummy Planet'}
-        ]});
+    const [mymodel, mymodelupdate] = useState({planets: [
+            {id: -1, name: 'Dummy  planet'}
+        ]})
 
-    const axios = require('axios').default;
     const getmydataaxios = () => {
         axios.get('/api/planet')
-            .then((response) => response.json())
             .then((bodydata) => {
-                mymodelUpdate((prevstate) => {
-                    return {planets: [...bodydata]}
+                console.log("Axios data: " + JSON.stringify(bodydata))
+                mymodelupdate((prevstate) => {
+                    return {planets: [...bodydata.data]}
                 });
             })
     }
@@ -39,70 +39,66 @@ const planetList = React.memo(  (props) => {
             header: {
                 'Accepts': 'application/json'
             }
-//        ,body: ''
         }).then((response) => response.json())
             .then((bodydata) => {
-                mymodelUpdate((prevstate) => {
+                mymodelupdate((prevstate) => {
                     return {planets: [...bodydata]}
                 });
             })
     }
 
     /* Function Component */
-    const updatemyplanets = (newplanets) => {
-        console.log("planets: " + JSON.stringify(newplanets));
+    const updatemyplanets= (newplanets) => {
+        console.log("planets: " + JSON.stringify(newplanets))
         fetch('/api/planet', {
             method: 'POST',
             headers: {
                 'Accepts': 'application/json',
-                'Content-Type': 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(newplanets)
         }).then((response) => response.json())
             .then((bodydata) => {
-                mymodelUpdate((prevstate) => {
+                mymodelupdate((prevstate) => {
                     return {planets: [...bodydata]}
                 });
             })
     }
 
-    const [headerStateModel, headerStateModelUpdate] = useState('Planets to go to');
-
-    /* Function Component */
-    const textFieldChanged = (myevent) => {
-        const inputValue = myevent.target.value;
-        console.log("textFieldChanged: " + JSON.stringify(inputValue));
-        headerStateModelUpdate((prevStateOfHeaderStateModel) => {
-              return inputValue;
-            }
-        );
+    const [headerState, updateHeaderstate] = useState('Planets to go to')
+    const textfieldchanged = (myevent) => {
+        const inputvalue = myevent.target.value
+        console.log("textfield changed: " + inputvalue)
+        updateHeaderstate((prevheaderstate) =>{
+            return inputvalue;
+        })
     }
 
-    /* Function Component */
-    const clickHandlerPlanet = (id) => {
-            const myplanets = [...mymodel.planets];
-            const planetindex = myplanets.findIndex(varPlanet => varPlanet.id === id);
-            myplanets.splice(planetindex, 1);
-            updatemyplanets(myplanets);
+    const clickhandlerPlanet = (id) => {
+        const myplanets = [...mymodel.planets]
+        const planetindex = myplanets.findIndex(planet => planet.id === id)
+        myplanets.splice(planetindex, 1)
+        updatemyplanets(myplanets)
     }
 
     const myplanets = mymodel.planets.map(planet => (<div key={planet.id}
-                  onClick={clickHandlerPlanet.bind(this, planet.id)}>{planet.name}</div>));
+                                                          onClick={clickhandlerPlanet.bind(this, planet.id)}>{planet.name}</div>))
 
     return (
-      <div>
-          <div>
-              <button name="Get My Data" onClick={getmydataaxios} id="button1">Get My Data</button>
-          </div>
-          <div>
-              <input type={"text"} onChange={textFieldChanged} id="headerInputField1" />
-          </div>
-          { headerStateModel }
-          { myplanets }
-      </div>
-    );
+        <div>
+            <div>
+                <button onClick={getmydataaxios} id="button1">
+                    Get My data
+                </button>
+            </div>
+            <div>
+                <input type="text" onChange={textfieldchanged} id="headerinputfield1"/>
+            </div>
+            {headerState}
+            { myplanets }
+        </div>
+    )
 })
-
 export default planetList;
 
 
