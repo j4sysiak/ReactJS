@@ -21,7 +21,18 @@ const planetList = React.memo(  (props) => {
             {id: -1, name: 'Dummy Planet'}
         ]});
 
-    /* Function */
+    const axios = require('axios').default;
+    const getmydataaxios = () => {
+        axios.get('/api/planet')
+            .then((response) => response.json())
+            .then((bodydata) => {
+                mymodelUpdate((prevstate) => {
+                    return {planets: [...bodydata]}
+                });
+            })
+    }
+
+    /* Function Component */
     const getmydata = () => {
         fetch('/api/planet', {
             method: 'GET',
@@ -37,6 +48,7 @@ const planetList = React.memo(  (props) => {
             })
     }
 
+    /* Function Component */
     const updatemyplanets = (newplanets) => {
         console.log("planets: " + JSON.stringify(newplanets));
         fetch('/api/planet', {
@@ -55,6 +67,8 @@ const planetList = React.memo(  (props) => {
     }
 
     const [headerStateModel, headerStateModelUpdate] = useState('Planets to go to');
+
+    /* Function Component */
     const textFieldChanged = (myevent) => {
         const inputValue = myevent.target.value;
         console.log("textFieldChanged: " + JSON.stringify(inputValue));
@@ -78,7 +92,7 @@ const planetList = React.memo(  (props) => {
     return (
       <div>
           <div>
-              <button name="Get My Data" onClick={getmydata} id="button1">Get My Data</button>
+              <button name="Get My Data" onClick={getmydataaxios} id="button1">Get My Data</button>
           </div>
           <div>
               <input type={"text"} onChange={textFieldChanged} id="headerInputField1" />
