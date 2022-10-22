@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-/* Function Component */
 const planetList = React.memo(  (props) => {
     // const axios = require('axios').default;
     useEffect(() => {
@@ -32,7 +31,6 @@ const planetList = React.memo(  (props) => {
             })
     }
 
-    /* Function Component */
     const getmydata = () => {
         fetch('/api/planet', {
             method: 'GET',
@@ -47,7 +45,17 @@ const planetList = React.memo(  (props) => {
             })
     }
 
-    /* Function Component */
+    const updatemyplanetsAxios= (newplanets) => {
+        console.log("planets: " + JSON.stringify(newplanets))
+        axios.post('/api/planet',
+            newplanets
+        ).then((bodydata) => {
+            mymodelupdate((prevstate) => {
+                return {planets: [...bodydata.data]}
+            });
+        })
+    }
+
     const updatemyplanets= (newplanets) => {
         console.log("planets: " + JSON.stringify(newplanets))
         fetch('/api/planet', {
@@ -78,7 +86,7 @@ const planetList = React.memo(  (props) => {
         const myplanets = [...mymodel.planets]
         const planetindex = myplanets.findIndex(planet => planet.id === id)
         myplanets.splice(planetindex, 1)
-        updatemyplanets(myplanets)
+        updatemyplanetsAxios(myplanets)
     }
 
     const myplanets = mymodel.planets.map(planet => (<div key={planet.id}
