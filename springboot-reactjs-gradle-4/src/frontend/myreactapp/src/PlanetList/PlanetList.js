@@ -41,7 +41,7 @@ const planetList = React.memo(  (props) => {
         console.log("planets: " + JSON.stringify(newplanets));
         fetch('/api/planet', {
             method: 'POST',
-            header: {
+            headers: {
                 'Accepts': 'application/json',
                 'Content-Type': 'application/json'
             },
