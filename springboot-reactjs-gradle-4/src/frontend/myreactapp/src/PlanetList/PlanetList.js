@@ -37,6 +37,23 @@ const planetList = React.memo(  (props) => {
             })
     }
 
+    const updatemyplanets = (newplanets) => {
+        console.log("planets: " + JSON.stringify(newplanets));
+        fetch('/api/planet', {
+            method: 'POST',
+            header: {
+                'Accepts': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newplanets)
+        }).then((response) => response.json())
+            .then((bodydata) => {
+                mymodelUpdate((prevstate) => {
+                    return {planets: [...bodydata]}
+                });
+            })
+    }
+
     const [headerStateModel, headerStateModelUpdate] = useState('Planets to go to');
     const textFieldChanged = (myevent) => {
         const inputValue = myevent.target.value;
@@ -49,15 +66,10 @@ const planetList = React.memo(  (props) => {
 
     /* Function Component */
     const clickHandlerPlanet = (id) => {
-        mymodelUpdate((prevStateOfModelPlanets) => {
-            const myplanets = [...prevStateOfModelPlanets.planets];
-            console.log("Before deletion: " + JSON.stringify(myplanets));
+            const myplanets = [...mymodel.planets];
             const planetindex = myplanets.findIndex(varPlanet => varPlanet.id === id);
-            console.log("planetindex: " + JSON.stringify(planetindex));
             myplanets.splice(planetindex, 1);
-            console.log("After deletion: " + JSON.stringify(myplanets));
-            return {planets: myplanets}
-        });
+            updatemyplanets(myplanets);
     }
 
     const myplanets = mymodel.planets.map(planet => (<div key={planet.id}
