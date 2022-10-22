@@ -1,4 +1,8 @@
-https://www.youtube.com/watch?v=_hx2qeOZ8Co&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=4
+part1: https://www.youtube.com/watch?v=_hx2qeOZ8Co&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=4
+part2: https://www.youtube.com/watch?v=DjHClpSxSUU&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=5
+part3: https://www.youtube.com/watch?v=OwV7lAhygfo&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=6
+part4: https://www.youtube.com/watch?v=OwV7lAhygfo&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=6
+part5: https://www.youtube.com/watch?v=X6Eun2Fapo0&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=8
 
 https://github.com/ekim197711/reactjs-springboot
 
@@ -203,4 +207,8 @@ Up and running: 2022-10-20T16:30:16.659741400
 
 
 
+=======================   install axios =================================
+ReactJS - Part 5 - http requests with fetch and axios
 
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-4/src/frontend/myreactapp (master)
+$ npm install axios
