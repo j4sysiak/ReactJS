@@ -12,8 +12,10 @@ const planetList = React.memo(  (props) => {
 
     const [headerStateModel, headerStateModelUpdate] = useState('Planets to go to');
     const textFieldChanged = (myevent) => {
+        const inputValue = myevent.target.value;
+        console.log("textFieldChanged: " + JSON.stringify(inputValue));
         headerStateModelUpdate((prevStateOfHeaderStateModel) => {
-              return myevent.target.value;
+              return inputValue;
             }
         );
     }
@@ -36,7 +38,8 @@ const planetList = React.memo(  (props) => {
 
     return (
         <div>
-            Here comes our list of planets!
+            <input type={"text"} onChange={textFieldChanged} id="headerInputField1" />
+            { headerStateModel }
             { myplanets }
         </div>
     )
