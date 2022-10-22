@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 public class PlanetRestController {
+
     private List<Planet> planets = List.of(
             new Planet(0, "Mercury BE"),
             new Planet(1, "Venus BE"),
