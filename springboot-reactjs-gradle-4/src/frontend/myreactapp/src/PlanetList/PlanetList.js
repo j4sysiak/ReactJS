@@ -15,7 +15,7 @@ const planetList = React.memo(  (props) => {
         const inputValue = myevent.target.value;
         console.log("textFieldChanged: " + JSON.stringify(inputValue));
         headerStateModelUpdate((prevStateOfHeaderStateModel) => {
-              return inputValue;
+              return myevent.target.value;
             }
         );
     }
