@@ -1,7 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 /* Function Component */
 const planetList = React.memo(  (props) => {
+
+    useEffect(() => {
+       console.log('Component was mounted!!!')
+    }, []);
+
+    useEffect(() => {
+        console.log('Component was mounted or updated!!!')
+    });
+
+    useEffect(() => {
+        return () => {
+            console.log('Component was unmounted!!!')
+        }
+    }, []);
 
     const [mymodel, mymodelUpdate] = useState({planets: [
             {id: 1, name: 'Jupiter'},
@@ -15,7 +29,7 @@ const planetList = React.memo(  (props) => {
         const inputValue = myevent.target.value;
         console.log("textFieldChanged: " + JSON.stringify(inputValue));
         headerStateModelUpdate((prevStateOfHeaderStateModel) => {
-              return myevent.target.value;
+              return inputValue;
             }
         );
     }
