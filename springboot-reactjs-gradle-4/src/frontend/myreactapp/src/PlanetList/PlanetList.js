@@ -3,16 +3,24 @@ import React, { useState } from 'react'
 /* Function Component */
 const planetList = React.memo(  (props) => {
 
-    const [mymodel, mymodelupdate] = useState({planets: [
+    const [mymodel, mymodelUpdate] = useState({planets: [
             {id: 1, name: 'Jupiter'},
             {id: 2, name: 'Mars'},
             {id: 3, name: 'Saturn'},
             {id: 4, name: 'Earth'}
         ]});
 
-    /* Function */
-    const clickhandlerPlanet = (id) => {
-        mymodelupdate((prevStateOfModelPlanets) => {
+    const [headerStateModel, headerStateModelUpdate] = useState('Planets to go to');
+    const textFieldChanged = (myevent) => {
+        headerStateModelUpdate((prevStateOfHeaderStateModel) => {
+              return myevent.target.value;
+            }
+        );
+    }
+
+    /* Function Component */
+    const clickHandlerPlanet = (id) => {
+        mymodelUpdate((prevStateOfModelPlanets) => {
             const myplanets = [...prevStateOfModelPlanets.planets];
             console.log("Before deletion: " + JSON.stringify(myplanets));
             const planetindex = myplanets.findIndex(varPlanet => varPlanet.id === id);
@@ -24,7 +32,7 @@ const planetList = React.memo(  (props) => {
     }
 
     const  myplanets = mymodel.planets.map(planet => (<div key={planet.id}
-                  onClick={clickhandlerPlanet.bind(this, planet.id)}>{planet.name}</div>))
+                  onClick={clickHandlerPlanet.bind(this, planet.id)}>{planet.name}</div>))
 
     return (
         <div>
