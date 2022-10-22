@@ -18,11 +18,24 @@ const planetList = React.memo(  (props) => {
     }, []);
 
     const [mymodel, mymodelUpdate] = useState({planets: [
-            {id: 1, name: 'Jupiter'},
-            {id: 2, name: 'Mars'},
-            {id: 3, name: 'Saturn'},
-            {id: 4, name: 'Earth'}
+            {id: -1, name: 'Dummy Planet'}
         ]});
+
+    /* Function */
+    const getmydata = () => {
+        fetch('/api/planet', {
+            method: 'GET',
+            header: {
+                'Accepts': 'application/json'
+            }
+//        ,body: ''
+        }).then((response) => response.json())
+            .then((bodydata) => {
+                mymodelUpdate((prevstate) => {
+                    return {planets: [...bodydata]}
+                });
+            })
+    }
 
     const [headerStateModel, headerStateModelUpdate] = useState('Planets to go to');
     const textFieldChanged = (myevent) => {
@@ -47,16 +60,21 @@ const planetList = React.memo(  (props) => {
         });
     }
 
-    const  myplanets = mymodel.planets.map(planet => (<div key={planet.id}
-                  onClick={clickHandlerPlanet.bind(this, planet.id)}>{planet.name}</div>))
+    const myplanets = mymodel.planets.map(planet => (<div key={planet.id}
+                  onClick={clickHandlerPlanet.bind(this, planet.id)}>{planet.name}</div>));
 
     return (
-        <div>
-            <input type={"text"} onChange={textFieldChanged} id="headerInputField1" />
-            { headerStateModel }
-            { myplanets }
-        </div>
-    )
+      <div>
+          <div>
+              <button name="Get My Data" onClick={getmydata} id="button1">Get My Data</button>
+          </div>
+          <div>
+              <input type={"text"} onChange={textFieldChanged} id="headerInputField1" />
+          </div>
+          { headerStateModel }
+          { myplanets }
+      </div>
+    );
 })
 
 export default planetList;
