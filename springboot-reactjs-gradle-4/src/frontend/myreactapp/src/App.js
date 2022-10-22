@@ -7,9 +7,8 @@ function App() {
   return (
    <div className="App">
       text-text-text-text-text-text-text-text-text-tex-text-text
-       <PlanetList/>
-       <SpaceshipList myheader='myheader: Look at all these spaceships!!!'/>
-
+       <PlanetList></PlanetList>
+       {/*<SpaceshipList myheader='myheader: Look at all these spaceships!!!'/>*/}
    </div>
  );
 }
