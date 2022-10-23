@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';  //---> to  działa na wersji: "axios": "^1.1.3"
+import './PlanetList.css'
 
 const planetList = React.memo(  (props) => {
     // const axios = require('axios').default;  ---> to nie działa na wersji: "axios": "^1.1.3", działa na wesjach < 1.0  np. "axios": "^0.21.1"
@@ -31,19 +32,19 @@ const planetList = React.memo(  (props) => {
             })
     }
 
-    const getmydata = () => {
-        fetch('/api/planet', {
-            method: 'GET',
-            header: {
-                'Accepts': 'application/json'
-            }
-        }).then((response) => response.json())
-            .then((bodydata) => {
-                mymodelupdate((prevstate) => {
-                    return {planets: [...bodydata]}
-                });
-            })
-    }
+    // const getmydata = () => {
+    //     fetch('/api/planet', {
+    //         method: 'GET',
+    //         header: {
+    //             'Accepts': 'application/json'
+    //         }
+    //     }).then((response) => response.json())
+    //         .then((bodydata) => {
+    //             mymodelupdate((prevstate) => {
+    //                 return {planets: [...bodydata]}
+    //             });
+    //         })
+    // }
 
     const updatemyplanetsAxios= (newplanets) => {
         console.log("planets: " + JSON.stringify(newplanets))
@@ -56,22 +57,22 @@ const planetList = React.memo(  (props) => {
         })
     }
 
-    const updatemyplanets= (newplanets) => {
-        console.log("planets: " + JSON.stringify(newplanets))
-        fetch('/api/planet', {
-            method: 'POST',
-            headers: {
-                'Accepts': 'application/json',
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newplanets)
-        }).then((response) => response.json())
-            .then((bodydata) => {
-                mymodelupdate((prevstate) => {
-                    return {planets: [...bodydata]}
-                });
-            })
-    }
+    // const updatemyplanets= (newplanets) => {
+    //     console.log("planets: " + JSON.stringify(newplanets))
+    //     fetch('/api/planet', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Accepts': 'application/json',
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(newplanets)
+    //     }).then((response) => response.json())
+    //         .then((bodydata) => {
+    //             mymodelupdate((prevstate) => {
+    //                 return {planets: [...bodydata]}
+    //             });
+    //         })
+    // }
 
     const [headerState, updateHeaderstate] = useState('Planets to go to')
     const textfieldchanged = (myevent) => {
@@ -89,8 +90,17 @@ const planetList = React.memo(  (props) => {
         updatemyplanetsAxios(myplanets)
     }
 
-    const myplanets = mymodel.planets.map(planet => (<div key={planet.id}
-                                                          onClick={clickhandlerPlanet.bind(this, planet.id)}>{planet.name}</div>))
+    const mystyle = {
+        background: 'blue',
+        color: 'red'
+    }
+
+    /* onClick() - creating planets from backend (Spring Boot)*/
+    const myplanets = mymodel.planets.map(planet => (<div className='css-planet' style={mystyle} key={planet.id}
+                                                          onClick={clickhandlerPlanet.bind(this, planet.id)}
+                                                     >{planet.name}</div>
+                                                    )
+    )
 
     return (
         <div>

@@ -31,19 +31,19 @@ const planetList = React.memo(  (props) => {
             })
     }
 
-    const getmydata = () => {
-        fetch('/api/planet', {
-            method: 'GET',
-            header: {
-                'Accepts': 'application/json'
-            }
-        }).then((response) => response.json())
-            .then((bodydata) => {
-                mymodelupdate((prevstate) => {
-                    return {planets: [...bodydata]}
-                });
-            })
-    }
+    // const getmydata = () => {
+    //     fetch('/api/planet', {
+    //         method: 'GET',
+    //         header: {
+    //             'Accepts': 'application/json'
+    //         }
+    //     }).then((response) => response.json())
+    //         .then((bodydata) => {
+    //             mymodelupdate((prevstate) => {
+    //                 return {planets: [...bodydata]}
+    //             });
+    //         })
+    // }
 
     const updatemyplanetsAxios= (newplanets) => {
         console.log("planets: " + JSON.stringify(newplanets))
@@ -56,22 +56,22 @@ const planetList = React.memo(  (props) => {
         })
     }
 
-    const updatemyplanets= (newplanets) => {
-        console.log("planets: " + JSON.stringify(newplanets))
-        fetch('/api/planet', {
-            method: 'POST',
-            headers: {
-                'Accepts': 'application/json',
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newplanets)
-        }).then((response) => response.json())
-            .then((bodydata) => {
-                mymodelupdate((prevstate) => {
-                    return {planets: [...bodydata]}
-                });
-            })
-    }
+    // const updatemyplanets= (newplanets) => {
+    //     console.log("planets: " + JSON.stringify(newplanets))
+    //     fetch('/api/planet', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Accepts': 'application/json',
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(newplanets)
+    //     }).then((response) => response.json())
+    //         .then((bodydata) => {
+    //             mymodelupdate((prevstate) => {
+    //                 return {planets: [...bodydata]}
+    //             });
+    //         })
+    // }
 
     const [headerState, updateHeaderstate] = useState('Planets to go to')
     const textfieldchanged = (myevent) => {
@@ -89,6 +89,7 @@ const planetList = React.memo(  (props) => {
         updatemyplanetsAxios(myplanets)
     }
 
+    /* onClick() - creating planets from backend (Spring Boot)*/
     const myplanets = mymodel.planets.map(planet => (<div key={planet.id}
                                                           onClick={clickhandlerPlanet.bind(this, planet.id)}>{planet.name}</div>))
 
