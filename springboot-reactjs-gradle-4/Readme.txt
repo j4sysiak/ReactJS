@@ -4,6 +4,7 @@ part3: https://www.youtube.com/watch?v=OwV7lAhygfo&list=PLF5X0J2bZ_k7ZMUpMUshBDf
 part4: https://www.youtube.com/watch?v=OwV7lAhygfo&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=6
 part5: https://www.youtube.com/watch?v=X6Eun2Fapo0&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=8
 Part6: https://www.youtube.com/watch?v=ykhTKfEgLnY&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=13
+Part7: https://www.youtube.com/watch?v=gyVHR9ut0FU&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=10
 
 
 https://github.com/ekim197711/reactjs-springboot

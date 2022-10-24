@@ -5,19 +5,19 @@ import './PlanetList.css'
 const planetList = React.memo(( props) => {
     // const axios = require('axios').default;  ---> to nie działa na wersji: "axios": "^1.1.3", działa na wesjach < 1.0  np. "axios": "^0.21.1"
 
-    useEffect(() => {
-       console.log('Component was mounted!!!')
-    }, []);
-
-    useEffect(() => {
-        console.log('Component was mounted or updated!!!')
-    });
-
-    useEffect(() => {
-        return () => {
-            console.log('Component was unmounted!!!')
-        }
-    }, []);
+    // useEffect(() => {
+    //    console.log('Component was mounted!!!')
+    // }, []);
+    //
+    // useEffect(() => {
+    //     console.log('Component was mounted or updated!!!')
+    // });
+    //
+    // useEffect(() => {
+    //     return () => {
+    //         console.log('Component was unmounted!!!')
+    //     }
+    // }, []);
 
     const [mymodel, mymodelupdate] = useState({planets: [
             { id: -1, name: 'Dummy  planet', localSolarSystem: true, habitable: true }
@@ -75,14 +75,14 @@ const planetList = React.memo(( props) => {
     //         })
     // }
 
-    const [headerState, updateHeaderstate] = useState('Planets to go to')
-    const textfieldchanged = (myevent) => {
-        const inputvalue = myevent.target.value
-        console.log("textfield changed: " + inputvalue)
-        updateHeaderstate((prevheaderstate) =>{
-            return inputvalue;
-        })
-    }
+    // const [headerState, updateHeaderstate] = useState('Planets to go to')
+    // const textfieldchanged = (myevent) => {
+    //     const inputvalue = myevent.target.value
+    //     console.log("textfield changed: " + inputvalue)
+    //     updateHeaderstate((prevheaderstate) =>{
+    //         return inputvalue;
+    //     })
+    // }
 
     const clickhandlerPlanet = (id) => {
         const myplanets = [...mymodel.planets]
@@ -91,26 +91,24 @@ const planetList = React.memo(( props) => {
         updatemyplanetsAxios(myplanets)
     }
 
-    const mystyle = {
-        background: 'blue',
-        color: 'red',
-        ':hover': {
-            background: 'yellow',
-            color: 'orange'
-        }
-    }
+    // const mystyle = {
+        // ':hover': {
+        //     background: 'yellow',
+        //     color: 'orange'
+        // }
+    // }
 
     /* onClick() - creating planets from backend (Spring Boot)*/
     const myplanets = mymodel.planets.map(planet => {
         let myclasses = 'planet';
         if (planet.localSolarSystem) {
-          myclasses = myclasses + '-local';
+          myclasses = myclasses + ' planetlocal';
         }
         if (planet.habitable) {
-            myclasses = myclasses + '-habitable';
+            myclasses = myclasses + ' planethabitable';
         }
         return (
-            <div className={myclasses} style={mystyle} key={planet.id}
+            <div className={myclasses} /*style={mystyle}*/ key={planet.id}
                  onClick={clickhandlerPlanet.bind(this, planet.id)}>{planet.name}</div>)
     });
 
@@ -122,11 +120,14 @@ const planetList = React.memo(( props) => {
                     Get My data
                 </button>
             </div>
-            <div>
-                <input type="text" onChange={textfieldchanged} id="headerinputfield1"/>
+            {/*<div>*/}
+            {/*    <input type="text" onChange={textfieldchanged} id="headerinputfield1"/>*/}
+            {/*</div>*/}
+            {/*{headerState}*/}
+            <div className='planets'>
+                { myplanets }
             </div>
-            {headerState}
-            { myplanets }
+
         </div>
     )
 })
