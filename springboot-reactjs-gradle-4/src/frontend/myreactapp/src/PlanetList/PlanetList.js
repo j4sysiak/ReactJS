@@ -84,11 +84,12 @@ const planetList = React.memo(( props) => {
     //     })
     // }
 
-    const clickhandlerPlanet = (id) => {
-        const myplanets = [...mymodel.planets]
-        const planetindex = myplanets.findIndex(planet => planet.id === id)
-        myplanets.splice(planetindex, 1)
-        updatemyplanetsAxios(myplanets)
+    const clickhandlerDeletePlanet = (id) => {
+        /* komentuje to, ponieważ na razie nie chcę usuwać planet z listy */
+        // const myplanets = [...mymodel.planets]
+        // const planetindex = myplanets.findIndex(planet => planet.id === id)
+        // myplanets.splice(planetindex, 1)
+        // updatemyplanetsAxios(myplanets)
     }
 
     // const mystyle = {
@@ -109,7 +110,7 @@ const planetList = React.memo(( props) => {
         }
         return (
             <div className={myclasses} /*style={mystyle}*/ key={planet.id}
-                 onClick={clickhandlerPlanet.bind(this, planet.id)}>{planet.name}</div>)
+                 onClick={clickhandlerDeletePlanet.bind(this, planet.id)}>{planet.name}</div>)
     });
 
 
@@ -127,7 +128,6 @@ const planetList = React.memo(( props) => {
             <div className='planets'>
                 { myplanets }
             </div>
-
         </div>
     )
 })

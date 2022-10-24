@@ -1,53 +1,22 @@
 import React, {useState} from 'react';
 import './App.css';
 import PlanetList from "./PlanetList/PlanetList";
-// import Radium, {StyleRoot} from 'radium'; /* './../../../../node_modules/radium/dist/radium' */
-// import Radium from  '/C/Users/Jacek/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-4/node_modules/radium/';
 
-function App() {
+function App()  {
 
     const [shouldShowState, shouldShowStateUpdate] = useState(true);
-    const planetContent = shouldShowState === true ? (<div><PlanetList></PlanetList></div>) : null;
-
-    const showPlanetsClickHandler = (nyevent) => {
-        shouldShowStateUpdate(prevstate => !prevstate)
-    }
+    const planetContent = shouldShowState === true ? (<div><PlanetList/></div>) : null;
 
   return (
-      // <StyleRoot>
-          <div className="App">
-              text-text-text-text-text-text-text-text-text-tex-text-text
-              <div onClick={showPlanetsClickHandler}>Show Planets Button!!! {shouldShowState}</div>
-              { planetContent }
+      <div className="App">
+          <div className='navigationTop'>
+              <div className='navItem'><a href='/planets'>Planets</a></div>
+              <div className='navItem'><a href='/quote'>Quotes</a></div>
+              <div className='navItem'><a href='/spaceship'>Spaceship</a></div>
           </div>
-      /*</StyleRoot>*/
- );
+             { planetContent }
+      </div>
+  );
 }
 
-export default App; //Radium(App);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default App;
