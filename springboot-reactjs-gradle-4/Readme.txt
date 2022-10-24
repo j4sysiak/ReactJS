@@ -229,8 +229,16 @@ added 14 packages, and audited 15 packages in 19s
 found 0 vulnerabilities
 
 
+=======================   install react-router-dom =================================
+Part7: https://www.youtube.com/watch?v=gyVHR9ut0FU&list=PLF5X0J2bZ_k7ZMUpMUshBDfkblMufQb99&index=10
+ReactJS - Part 7 - Routing in a single page application
 
+Jacek@BERLIN MINGW64 ~/Documents/JAVA/SpringBoot/ReactJS/springboot-reactjs-gradle-4/src/frontend/myreactapp (master)
+$ npm install --save react-router-dom
 
+w pliku package.json pojawi się:
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2",
 
 
 
