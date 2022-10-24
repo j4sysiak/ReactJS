@@ -12,11 +12,11 @@ public class PlanetRestController {
 
     private List<Planet> planets = List.of(
             new Planet(0, "Mercury BE", true, false),
-            new Planet(1, "Venus BE", true, true),
-            new Planet(2, "Earth BE", true, false),
-            new Planet(3, "XXX BE", false, true),
+            new Planet(1, "Venus BE", true, false),
+            new Planet(2, "Earth BE", true, true),
+            new Planet(3, "XXX BE", false, false),
             new Planet(4, "YYY BE", false, false),
-            new Planet(5, "ZZZ BE", false, true)
+            new Planet(5, "ZZZ-01 BE", false, true)
     );
 
     @GetMapping("/api/planet")
