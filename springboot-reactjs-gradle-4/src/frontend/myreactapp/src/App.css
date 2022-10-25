@@ -51,6 +51,21 @@
   margin: 1em;
 }
 
+.content {
+  display: flex;
+  margin: auto;
+  width: 50%;
+  flex-direction: column;
+  align-content: center;
+}
+
+.active {
+  color: red;
+}
+
+.mycustomactive {
+  color: brown;
+}
 
 
 

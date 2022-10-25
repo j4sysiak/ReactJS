@@ -1,8 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';  //---> to  działa na wersji: "axios": "^1.1.3"
 import './PlanetList.css'
+import {
+    BrowserRouter,
+    Routes, // instead of "Switch"
+    Route,
+    NavLink,
+    useLocation,
+    useNavigate,
+    useParams
+} from "react-router-dom";
+
+function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (
+            <Component
+                {...props}
+                router={{ location, navigate, params }}
+            />
+        );
+    }
+
+    return ComponentWithRouterProp;
+}
 
 const planetList = React.memo(( props) => {
+
+     console.log("props: " + props);  // nie działa
+
     // const axios = require('axios').default;  ---> to nie działa na wersji: "axios": "^1.1.3", działa na wesjach < 1.0  np. "axios": "^0.21.1"
 
     // useEffect(() => {
@@ -109,8 +137,13 @@ const planetList = React.memo(( props) => {
             myclasses = myclasses + ' planethabitable';
         }
         return (
-            <div className={myclasses} /*style={mystyle}*/ key={planet.id}
-                 onClick={clickhandlerDeletePlanet.bind(this, planet.id)}>{planet.name}</div>)
+            <div className={myclasses} key={planet.id} /*style={mystyle}*/
+                 onClick={clickhandlerDeletePlanet.bind(this, planet.id)}>
+                <NavLink to={'/planet-details/' + planet.id}>
+                   {planet.name}
+                </NavLink>
+            </div>
+        )
     });
 
 
@@ -121,10 +154,6 @@ const planetList = React.memo(( props) => {
                     Get My data
                 </button>
             </div>
-            {/*<div>*/}
-            {/*    <input type="text" onChange={textfieldchanged} id="headerinputfield1"/>*/}
-            {/*</div>*/}
-            {/*{headerState}*/}
             <div className='planets'>
                 { myplanets }
             </div>
@@ -132,7 +161,7 @@ const planetList = React.memo(( props) => {
     )
 })
 
-export default planetList;
+export default withRouter(planetList);
 
 
 

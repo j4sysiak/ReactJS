@@ -7,6 +7,8 @@ import {
     Route,
     NavLink
 } from "react-router-dom";
+import PlanetDetails from "./PlanetDetails/PlanetDetails";
+import planetDetails from "./PlanetDetails/PlanetDetails";
 
 function App() {
 
@@ -21,18 +23,31 @@ function App() {
                         <NavLink to='/planets'>Planets</NavLink>
                     </div>
                     <div className='navItem'>
-                        <NavLink to='/quotes'>Quotes</NavLink>
+                        <NavLink
+                            to="/quotes"
+                            style={isActive => ({
+                                color: isActive ? "green" : "blue"
+                            })}
+                        >
+                            Quotes
+                        </NavLink>
                     </div>
                     <div className='navItem'>
                         <NavLink to='/asteroids'>Asteroids</NavLink>
                     </div>
+                    <div className='navItem'>
+                        <NavLink to='/planet-details'>PlanetDetails</NavLink>
+                    </div>
                 </div>
-                <Routes>
-                    <Route path="/planets" element={ <PlanetList /> }/>
-                    <Route path='/quotes' element = {<h1>Quotes</h1>}/>
-                    <Route path='/asteroids' element = {<h1>Asteroids!!!</h1>}/>
-                    <Route path='/' element = {<h1>(default error when path is empty: ) Unknown path!!!!!!</h1>}/>
-                </Routes>
+                <div className='content'>
+                    <Routes>
+                        <Route path="/planets" element={ <PlanetList /> }/>
+                        <Route path="/planet-details/:id" element={ <PlanetDetails /> }/>
+                        <Route path='/quotes' element = {<h1>Quotes</h1>}/>
+                        <Route path='/asteroids' element = {<h1>Asteroids!!!</h1>}/>
+                        <Route path='/' element = {<h1>(default error when path is empty: ) Unknown path!!!!!!</h1>}/>
+                    </Routes>
+                </div>
             </div>
         </BrowserRouter>
     );
