@@ -29,7 +29,7 @@ function withRouter(Component) {
 
 const planetList = React.memo(( props) => {
 
-     console.log("props: " + props);  // nie działa
+    // console.log("props: " + props);  // nie działa w wersji React 6
 
     // const axios = require('axios').default;  ---> to nie działa na wersji: "axios": "^1.1.3", działa na wesjach < 1.0  np. "axios": "^0.21.1"
 
@@ -113,6 +113,7 @@ const planetList = React.memo(( props) => {
     // }
 
     const clickhandlerDeletePlanet = (id) => {
+
         /* komentuje to, ponieważ na razie nie chcę usuwać planet z listy */
         // const myplanets = [...mymodel.planets]
         // const planetindex = myplanets.findIndex(planet => planet.id === id)

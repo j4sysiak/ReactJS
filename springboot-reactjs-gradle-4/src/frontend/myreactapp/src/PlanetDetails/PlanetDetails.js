@@ -2,8 +2,9 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 
 function PlanetDetails() {
+    console.log(useParams());
     const { id } = useParams();
-    console.log("id: " + id);
+    // console.log("id: " + id);
     return (
         <div>
             <h1>Planet details!!!</h1>
